@@ -40,11 +40,25 @@ public class FilmController {
 	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST, params = { "title", "description",
 			"releaseYear", "languageID", "rentalDuration", "rentalRate", "length", "replacementCost", "rating",
 			"features" })
-	public ModelAndView createFilm(String title, String description, short releaseYear, int languageID,
-			int rentalDuration, double rentalRate, int length, double replacementCost, String rating, String features) {
+	public ModelAndView createFilm(String title, String description, String releaseYear, String languageID,
+			String rentalDuration, String rentalRate, String length, String replacementCost, String rating,
+			String features) {
 		ModelAndView mv = new ModelAndView();
-		Film film = new Film(title, description, releaseYear, languageID, rentalDuration, rentalRate, length,
-				replacementCost, rating, features);
+		Film film = null;
+		try {
+			short year = Short.parseShort(releaseYear);
+			int duration = Integer.parseInt(rentalDuration);
+			int langID = Integer.parseInt(languageID);
+			double rate = Double.parseDouble(rentalRate);
+			int filmLength = Integer.parseInt(length);
+			double cost = Double.parseDouble(replacementCost);
+			film = new Film(title, description, year, langID, duration, rate, filmLength, cost, rating, features);
+		} catch (NumberFormatException e) {
+			mv.addObject("film", "We were unable to add your film to the database, please try again");
+			mv.setViewName("WEB-INF/views/output.jsp");
+			return mv;
+		}
+
 		film = filmDao.createFilm(film);
 		if (film != null) {
 			mv.addObject("film", film);
@@ -53,6 +67,11 @@ public class FilmController {
 		}
 		mv.setViewName("WEB-INF/views/output.jsp");
 		return mv;
+	}
+
+	@RequestMapping(path = ".do")
+	public String catchAll() {
+		return "WEB-INF/views/output.jsp";
 	}
 
 }
