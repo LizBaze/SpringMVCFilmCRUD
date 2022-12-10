@@ -41,4 +41,18 @@ public class FilmController {
     return mv;
 	}
 	
+	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST,
+			params = {"title", "description", "releaseYear", "languageID", 
+					"rentalDuration", "rentalRate", "length", "replacementCost",
+					"rating", "features"})
+	public ModelAndView createFilm(String title, String description, short releaseYear,
+			int languageID, int rentalDuration, double rentalRate, int length, 
+			double replacementCost, String rating, String features) {
+		ModelAndView mv = new ModelAndView();
+		
+		
+		
+		return mv;
+	}
+	
 }
