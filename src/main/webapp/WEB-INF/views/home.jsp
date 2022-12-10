@@ -10,5 +10,12 @@
 
 <h1>Welcome to the SDVid Database</h1>
 
+
+<form action="output.do" method="GET">
+		 Movie Id:
+		<input type="text" name="movie id" size="4"/> 
+		<input type="submit" value="Get movie id" />
+	</form>
+
 </body>
 </html>

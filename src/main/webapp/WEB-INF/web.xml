@@ -17,5 +17,13 @@
 		<servlet-name>Film</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>output</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>output</servlet-name>
+		<url-pattern>output.do</url-pattern>
+	</servlet-mapping>
 
 </web-app>
