@@ -334,7 +334,7 @@ public class FilmDAOImpl implements FilmDAO {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			String sql = "INSERT INTO film (title, language_id) VALUES (?, 1)";
+			String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features) VALUES (?, 1)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, film.getTitle());
 			int filmsCreated = stmt.executeUpdate();
