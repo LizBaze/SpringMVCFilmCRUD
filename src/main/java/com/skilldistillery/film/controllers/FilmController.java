@@ -14,45 +14,45 @@ public class FilmController {
 
 	@Autowired
 	private FilmDAOImpl filmDao;
-	
+
 	@RequestMapping("home.do")
 	public String home() {
-		
-		
-		
-		
-		
+
 		return "WEB-INF/views/home.jsp";
 	}
-	
+
 	@RequestMapping(path = "output.do", params = "filmid", method = RequestMethod.GET)
 	public ModelAndView output(String filmid) {
 		ModelAndView mv = new ModelAndView();
 		int id = Integer.parseInt(filmid);
 		Film film = filmDao.findFilmById(id);
 		mv.setViewName("WEB-INF/views/output.jsp");
-		
-    if(film != null) {		    
-    	mv.addObject("film", film);
 
-    } else {
-    	mv.addObject("film", "No Film Found");
-    }
-    return mv;
-	}
-	
-	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST,
-			params = {"title", "description", "releaseYear", "languageID", 
-					"rentalDuration", "rentalRate", "length", "replacementCost",
-					"rating", "features"})
-	public ModelAndView createFilm(String title, String description, short releaseYear,
-			int languageID, int rentalDuration, double rentalRate, int length, 
-			double replacementCost, String rating, String features) {
-		ModelAndView mv = new ModelAndView();
-		
-		
-		
+		if (film != null) {
+			mv.addObject("film", film);
+
+		} else {
+			mv.addObject("film", "No Film Found");
+		}
 		return mv;
 	}
-	
+
+	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST, params = { "title", "description",
+			"releaseYear", "languageID", "rentalDuration", "rentalRate", "length", "replacementCost", "rating",
+			"features" })
+	public ModelAndView createFilm(String title, String description, short releaseYear, int languageID,
+			int rentalDuration, double rentalRate, int length, double replacementCost, String rating, String features) {
+		ModelAndView mv = new ModelAndView();
+		Film film = new Film(title, description, releaseYear, languageID, rentalDuration, rentalRate, length,
+				replacementCost, rating, features);
+		film = filmDao.createFilm(film);
+		if (film != null) {
+			mv.addObject("film", film);
+		} else {
+			mv.addObject("film", "We were unable to add your film to the database, please try again");
+		}
+		mv.setViewName("WEB-INF/views/output.jsp");
+		return mv;
+	}
+
 }

@@ -35,6 +35,20 @@ public class Film {
 		this.features = features;
 	}
 
+	public Film(String title, String desc, short releaseYear, int langId, int rentDur, double rate,
+			int length, double repCost, String rating, String features) {
+		this.title = title;
+		this.description = desc;
+		this.releaseYear = releaseYear;
+		this.languageId = langId;
+		this.rentalDuration = rentDur;
+		this.rentalRate = rate;
+		this.length = length;
+		this.replacementCost = repCost;
+		this.rating = rating;
+		this.features = features;
+	}
+	
 	public int getId() {
 		return id;
 	}
