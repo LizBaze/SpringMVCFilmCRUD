@@ -107,7 +107,7 @@ public class FilmController {
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
 		film = filmDao.updateFilm(film);
-		
+
 		if (film != null) {
 			mv.addObject("film", film);
 			mv.setViewName("WEB-INF/views/output.jsp");
@@ -115,7 +115,7 @@ public class FilmController {
 			mv.addObject("outputMessage", "We were unable to update this film");
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
-		
+
 		return mv;
 	}
 }
