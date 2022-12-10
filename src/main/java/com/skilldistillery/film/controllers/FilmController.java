@@ -101,7 +101,17 @@ public class FilmController {
 			double rate = Double.parseDouble(rentalRate);
 			int filmLength = Integer.parseInt(length);
 			double cost = Double.parseDouble(replacementCost);
-			film = new Film(title, description, year, langID, duration, rate, filmLength, cost, rating, features);
+			film = new Film();
+			film.setId(id);
+			film.setTitle(title);
+			film.setDescription(description);
+			film.setReleaseYear(year);
+			film.setLanguageId(langID);
+			film.setRentalDuration(duration);
+			film.setLength(filmLength);
+			film.setReplacementCost(cost);
+			film.setRating(rating);
+			film.setFeatures(features);
 		} catch (NumberFormatException e) {
 			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
 			mv.setViewName("WEB-INF/views/error.jsp");
