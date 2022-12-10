@@ -17,6 +17,13 @@
 	</form>
 	<br>
 	<br>
+	<h3>Search By Key Word:</h3>
+	<form action="keyword.do" method="GET">
+		 <input type="text" name="keyword" size="4" /> 
+		<input type="submit" value="Submit" />
+	</form>
+	<br>
+	<br>
 	<h3>Add a new film to the database:</h3>
 	<form action="createfilm.do" method="POST">
 	<label for="title">Film Title</label>
