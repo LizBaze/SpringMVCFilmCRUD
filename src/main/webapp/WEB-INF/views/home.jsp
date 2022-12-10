@@ -49,6 +49,45 @@
 	<input type="submit" value="Submit" />
 	
 	</form>
+	
+	<p>Update a film with new information </p>
+	
+	<form action="updateFilm.do" method="POST">
+	
+	<label for="id">Film ID</label>
+	<input type="text" name="id"/>
+	<br>
+	<br>
+	<label for="title">Film Title</label>
+	<input type="text" name="title"/>
+	<label for="description">Description</label>
+	<input type="text" name="description"/>
+	<label for="releaseYear">Release Year</label>
+	<input type="text" name="releaseYear"/>
+	<label for="languageID">Language ID</label>
+	<input type="text" name="languageID"/>
+	<br>
+	<br>
+	<label for="rentalDuration">Rental Duration</label>
+	<input type="text" name="rentalDuration"/>
+	<label for="rentalRate">Rental Rate</label>
+	<input type="text" name="rentalRate"/>
+	
+	<label for="length">Length</label>
+	<input type="text" name="length"/>
+	<label for="replacementCost">Replacement Cost</label>
+	<input type="text" name="replacementCost"/>
+	<br>
+	<br>
+	<label for="rating">Rating</label>
+	<input type="text" name="rating"/>
+	<label for="features">Features</label>
+	<input type="text" name="features"/>
+	<br>
+	<br>
+	<input type="submit" value="Submit" />
+	
+	</form>
 
 </body>
 </html>
