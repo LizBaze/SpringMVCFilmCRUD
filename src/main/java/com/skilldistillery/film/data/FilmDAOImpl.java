@@ -429,6 +429,7 @@ public class FilmDAOImpl implements FilmDAO {
 			
 			if (deletions == 1) {
 				conn.commit();
+				film = null;
 			} else {
 				conn.rollback();
 			}

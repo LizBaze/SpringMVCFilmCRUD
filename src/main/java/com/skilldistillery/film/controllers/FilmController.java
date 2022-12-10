@@ -30,12 +30,15 @@ public class FilmController {
 
 		if (film != null) {
 			mv.addObject("film", film);
+			System.out.println("I'm in if " + film);
 
 		} else {
 			mv.addObject("film", "No Film Found");
+			System.out.println("I'm in else");
 		}
 		return mv;
 	}
+	// TODO separate jsp's for successful and unsuccessful queries
 
 	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST, params = { "title", "description",
 			"releaseYear", "languageID", "rentalDuration", "rentalRate", "length", "replacementCost", "rating",
@@ -69,6 +72,16 @@ public class FilmController {
 		return mv;
 	}
 
-	
+	@RequestMapping(path = "delete.do", params = "filmid")
+	public ModelAndView deleteFilm(int filmid) {
+		ModelAndView mv = new ModelAndView();
+		Film film = filmDao.findFilmById(filmid);
+		film = filmDao.deleteFilm(film);
+		if (film == null) {
+			mv.addObject("film", "Film deletion successful");
+		}
+		mv.setViewName("WEB-INF/views/output.jsp");
+		return mv;
+	}
 
 }
