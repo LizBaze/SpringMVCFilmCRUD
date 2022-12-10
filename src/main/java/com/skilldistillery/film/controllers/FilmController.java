@@ -29,12 +29,12 @@ public class FilmController {
 
 		if (film != null) {
 			mv.addObject("film", film);
-			System.out.println("I'm in if " + film);
+
 			mv.setViewName("WEB-INF/views/output.jsp");
 
 		} else {
-			mv.addObject("film", "No Film Found");
-			System.out.println("I'm in else");
+			mv.addObject("outputMessage", "No Film Found");
+			
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
 		return mv;
@@ -69,7 +69,7 @@ public class FilmController {
 			mv.addObject("film", film);
 		} else {
 			mv.setViewName("WEB-INF/views/error.jsp");
-			mv.addObject("film", "We were unable to add your film to the database, please try again");
+			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
 		}
 		return mv;
 	}
@@ -80,7 +80,7 @@ public class FilmController {
 		Film film = filmDao.findFilmById(filmid);
 		film = filmDao.deleteFilm(film);
 		if (film == null) {
-			mv.addObject("film", "Film deletion successful");
+			mv.addObject("outputMessage", "Film deletion successful");
 		}
 		mv.setViewName("WEB-INF/views/error.jsp");
 		return mv;
