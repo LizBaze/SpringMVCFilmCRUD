@@ -88,34 +88,41 @@ public class FilmController {
 
 	@RequestMapping(path = "updateFilm.do", params = { "id", "title", "description", "releaseYear", "languageID",
 			"rentalDuration", "rentalRate", "length", "replacementCost", "rating", "features" })
-	public ModelAndView updateFilm(String filmid, String title, String description, String releaseYear,
+	public ModelAndView updateFilm(String id, String title, String description, String releaseYear,
 			String languageID, String rentalDuration, String rentalRate, String length, String replacementCost,
 			String rating, String features) {
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
+		int filmid = 0;
+		short year = 0;
+		int duration = 0;
+		int langID = 0;
+		double rate = 0;
+		int filmLength = 0;
+		double cost = 0;
 		try {
-			int id = Integer.parseInt(filmid);
-			short year = Short.parseShort(releaseYear);
-			int duration = Integer.parseInt(rentalDuration);
-			int langID = Integer.parseInt(languageID);
-			double rate = Double.parseDouble(rentalRate);
-			int filmLength = Integer.parseInt(length);
-			double cost = Double.parseDouble(replacementCost);
-			film = new Film();
-			film.setId(id);
-			film.setTitle(title);
-			film.setDescription(description);
-			film.setReleaseYear(year);
-			film.setLanguageId(langID);
-			film.setRentalDuration(duration);
-			film.setLength(filmLength);
-			film.setReplacementCost(cost);
-			film.setRating(rating);
-			film.setFeatures(features);
+			filmid = id != null ? Integer.parseInt(id) : 0;
+			year = releaseYear != null ? Short.parseShort(releaseYear) : 0;
+			duration = rentalDuration != null ? Integer.parseInt(rentalDuration) : 0;
+			langID = languageID != null ? Integer.parseInt(languageID) : 0;
+			rate = rentalRate != null ? Double.parseDouble(rentalRate) : 0;
+			filmLength = length != null ? Integer.parseInt(length) : 0;
+			cost = replacementCost != null ? Double.parseDouble(replacementCost) : 0;
 		} catch (NumberFormatException e) {
 			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
+		film = new Film();
+		film.setId(filmid);
+		film.setTitle(title);
+		film.setDescription(description);
+		film.setReleaseYear(year);
+		film.setLanguageId(langID);
+		film.setRentalDuration(duration);
+		film.setLength(filmLength);
+		film.setReplacementCost(cost);
+		film.setRating(rating);
+		film.setFeatures(features);
 		film = filmDao.updateFilm(film);
 
 		if (film != null) {

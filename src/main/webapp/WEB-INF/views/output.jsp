@@ -7,6 +7,10 @@
 <title>Film Details</title>
 </head>
 <body><p>${film}</p>
+<p>${film.replacementCost}</p>
+<p>${film.id}</p>
+${film.languageId}
+
 <br>
 <br>
 <p>Delete Film:<p>

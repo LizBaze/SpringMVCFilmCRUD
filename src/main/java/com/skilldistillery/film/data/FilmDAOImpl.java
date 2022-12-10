@@ -382,6 +382,7 @@ public class FilmDAOImpl implements FilmDAO {
 			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?"
 					+ "WHERE id=?";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setShort(3, film.getReleaseYear());
@@ -392,6 +393,7 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getFeatures());
+			stmt.setInt(11, film.getId());
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
                     film = findFilmById(film.getId());
