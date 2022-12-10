@@ -69,9 +69,6 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = ".do")
-	public String catchAll() {
-		return "WEB-INF/views/output.jsp";
-	}
+	
 
 }
