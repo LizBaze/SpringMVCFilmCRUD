@@ -8,16 +8,16 @@
 </head>
 <body>
 
-	<h1>Welcome to the SDVid Database</h1>
+	<h1>Welcome to the SDVid Database Management System</h1>
 
-<p>Look up a film by ID:<p>
+<h3>Look up a film by ID:</h3>
 	<form action="output.do" method="GET">
 		 <input type="text" name="filmid" size="4" /> 
 		<input type="submit" value="Submit" />
 	</form>
 	<br>
 	<br>
-	<p>Add a new film to the database:</p>
+	<h3>Add a new film to the database:</h3>
 	<form action="createfilm.do" method="POST">
 	<label for="title">Film Title</label>
 	<input type="text" name="title"/>
@@ -50,7 +50,7 @@
 	
 	</form>
 	
-	<p>Update a film with new information </p>
+	<h3>Update a film with new information </h3>
 	
 	<form action="updateFilm.do" method="POST">
 	

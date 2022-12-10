@@ -34,7 +34,7 @@ public class FilmController {
 
 		} else {
 			mv.addObject("outputMessage", "No Film Found");
-			
+
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
 		return mv;
@@ -86,4 +86,36 @@ public class FilmController {
 		return mv;
 	}
 
+	@RequestMapping(path = "updateFilm.do", params = { "id", "title", "description", "releaseYear", "languageID",
+			"rentalDuration", "rentalRate", "length", "replacementCost", "rating", "features" })
+	public ModelAndView updateFilm(String filmid, String title, String description, String releaseYear,
+			String languageID, String rentalDuration, String rentalRate, String length, String replacementCost,
+			String rating, String features) {
+		ModelAndView mv = new ModelAndView();
+		Film film = null;
+		try {
+			int id = Integer.parseInt(filmid);
+			short year = Short.parseShort(releaseYear);
+			int duration = Integer.parseInt(rentalDuration);
+			int langID = Integer.parseInt(languageID);
+			double rate = Double.parseDouble(rentalRate);
+			int filmLength = Integer.parseInt(length);
+			double cost = Double.parseDouble(replacementCost);
+			film = new Film(title, description, year, langID, duration, rate, filmLength, cost, rating, features);
+		} catch (NumberFormatException e) {
+			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
+			mv.setViewName("WEB-INF/views/error.jsp");
+		}
+		film = filmDao.updateFilm(film);
+		
+		if (film != null) {
+			mv.addObject("film", film);
+			mv.setViewName("WEB-INF/views/output.jsp");
+		} else {
+			mv.addObject("outputMessage", "We were unable to update this film");
+			mv.setViewName("WEB-INF/views/error.jsp");
+		}
+		
+		return mv;
+	}
 }
