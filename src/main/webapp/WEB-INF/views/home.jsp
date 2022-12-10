@@ -13,8 +13,8 @@
 
 <form action="output.do" method="GET">
 		 Movie Id:
-		<input type="text" name="movie id" size="4"/> 
-		<input type="submit" value="Get movie id" />
+		<input type="text" name="filmid" size="4"/> 
+		<input type="submit" value="Submit" />
 	</form>
 
 </body>
