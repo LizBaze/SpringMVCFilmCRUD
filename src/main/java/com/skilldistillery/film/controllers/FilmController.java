@@ -85,12 +85,12 @@ public class FilmController {
 		List<Actor> actors = filmDao.findActorsByFilmId(id);
 		Film film = null;
 		try {
-			short year = Short.parseShort(releaseYear);
-			int duration = Integer.parseInt(rentalDuration);
-			int langID = Integer.parseInt(languageID);
-			double rate = Double.parseDouble(rentalRate);
-			int filmLength = Integer.parseInt(length);
-			double cost = Double.parseDouble(replacementCost);
+			short year = !releaseYear.equals("") ? Short.parseShort(releaseYear) : 0;
+			int duration = !rentalDuration.equals("") ? Integer.parseInt(rentalDuration) : 0;
+			int langID = !languageID.equals("") ? Integer.parseInt(languageID) : 0;
+			double rate = !rentalRate.equals("") ? Double.parseDouble(rentalRate) : 0;
+			int filmLength = !length.equals("") ? Integer.parseInt(length) : 0;
+			double cost = !replacementCost.equals("") ? Double.parseDouble(replacementCost) : 0;
 			film = new Film(title, description, year, langID, duration, rate, filmLength, cost, rating, features);
 		} catch (NumberFormatException e) {
 			mv.addObject("film", "We were unable to add your film to the database, please try again");
@@ -151,13 +151,13 @@ public class FilmController {
 		int filmLength = 0;
 		double cost = 0;
 		try {
-			filmid = id != null ? Integer.parseInt(id) : 0;
-			year = releaseYear != null ? Short.parseShort(releaseYear) : 0;
-			duration = rentalDuration != null ? Integer.parseInt(rentalDuration) : 0;
-			langID = languageID != null ? Integer.parseInt(languageID) : 0;
-			rate = rentalRate != null ? Double.parseDouble(rentalRate) : 0;
-			filmLength = length != null ? Integer.parseInt(length) : 0;
-			cost = replacementCost != null ? Double.parseDouble(replacementCost) : 0;
+			filmid = ! id.equals("") ? Integer.parseInt(id) : 0;
+			year = !releaseYear.equals("")  ? Short.parseShort(releaseYear) : 0;
+			duration = !rentalDuration.equals("")  ? Integer.parseInt(rentalDuration) : 0;
+			langID = !languageID.equals("")  ? Integer.parseInt(languageID) : 0;
+			rate = !rentalRate.equals("")  ? Double.parseDouble(rentalRate) : 0;
+			filmLength = !length.equals("")  ? Integer.parseInt(length) : 0;
+			cost = !replacementCost.equals("") ? Double.parseDouble(replacementCost) : 0;
 		} catch (NumberFormatException e) {
 			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
 			mv.setViewName("WEB-INF/views/error.jsp");

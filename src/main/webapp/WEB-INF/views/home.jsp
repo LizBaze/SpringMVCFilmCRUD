@@ -60,12 +60,12 @@
 	
 	<label for="features">Features</label>
 	<select name="features" id="features">
-<option value=""></option>
-<option value="Behind the Scenes">Behind the Scenes</option>
-<option value="Commentaries">Commentaries</option>
-<option value="Deleted Scenes">Deleted Scenes</option>
-<option value="railers">Trailers</option>
-</select>
+		<option value=""></option>
+		<option value="Behind the Scenes">Behind the Scenes</option>
+		<option value="Commentaries">Commentaries</option>
+		<option value="Deleted Scenes">Deleted Scenes</option>
+		<option value="Trailers">Trailers</option>
+	</select>
 	<br>
 	<br>
 	<input type="submit" value="Submit" />
