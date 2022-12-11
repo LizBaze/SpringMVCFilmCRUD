@@ -93,8 +93,8 @@ public class FilmController {
 			double cost = !replacementCost.equals("") ? Double.parseDouble(replacementCost) : 0;
 			film = new Film(title, description, year, langID, duration, rate, filmLength, cost, rating, features);
 		} catch (NumberFormatException e) {
-			mv.addObject("film", "We were unable to add your film to the database, please try again");
-			mv.setViewName("WEB-INF/views/output.jsp");
+			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
+			mv.setViewName("WEB-INF/views/error.jsp");
 			return mv;
 		}
 
