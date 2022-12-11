@@ -77,9 +77,9 @@ public class FilmController {
 	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST, params = { "title", "description",
 			"releaseYear", "languageID", "rentalDuration", "rentalRate", "length", "replacementCost", "rating",
 			"features" })
-	public ModelAndView createFilm(RedirectAttributes redir, String title, String description, String releaseYear, String languageID,
+	public ModelAndView createFilm(String title, String description, String releaseYear, String languageID,
 			String rentalDuration, String rentalRate, String length, String replacementCost, String rating,
-			String features) {
+			String features, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		int id = 0;
 		List<Actor> actors = filmDao.findActorsByFilmId(id);

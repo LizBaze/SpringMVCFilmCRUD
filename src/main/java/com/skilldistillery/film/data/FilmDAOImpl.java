@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -346,7 +347,7 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getFeatures());
 			int filmsCreated = stmt.executeUpdate();
-			
+
 			System.out.println(stmt);
 
 			if (filmsCreated == 1) {
@@ -369,6 +370,9 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 
 			conn.commit();
+		} catch (SQLIntegrityConstraintViolationException e) {
+			film = null;
+			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -404,7 +408,10 @@ public class FilmDAOImpl implements FilmDAO {
 			} else {
 				film = null;
 			}
-		} catch (SQLException e) {
+		} catch (SQLIntegrityConstraintViolationException e) {
+			film = null;
+			e.printStackTrace();
+		}catch (SQLException e) {
 		}
 		return film;
 	}
