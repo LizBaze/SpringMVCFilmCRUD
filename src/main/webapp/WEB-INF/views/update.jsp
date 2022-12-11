@@ -17,23 +17,23 @@
 	<br>
 	<br>
 	<label for="title">Film Title</label>
-	<input type="text" name="title" required/>
+	<input type="text" name="title"/>
 	<label for="description">Description</label>
-	<input type="text" name="description" required/>
+	<input type="text" name="description"/>
 	<label for="releaseYear">Release Year</label>
-	<input type="text" name="releaseYear" required/>
+	<input type="text" name="releaseYear"/>
 	
 	<br>
 	<br>
 	<label for="rentalDuration">Rental Duration</label>
-	<input type="text" name="rentalDuration" required/>
+	<input type="text" name="rentalDuration"/>
 	<label for="rentalRate">Rental Rate</label>
-	<input type="text" name="rentalRate" required/>
+	<input type="text" name="rentalRate"/>
 	
 	<label for="length">Length</label>
-	<input type="text" name="length" required/>
+	<input type="text" name="length"/>
 	<label for="replacementCost">Replacement Cost</label>
-	<input type="text" name="replacementCost" required/>
+	<input type="text" name="replacementCost"/>
 	<br>
 	<br>
 	<label for="rating">Rating</label>
