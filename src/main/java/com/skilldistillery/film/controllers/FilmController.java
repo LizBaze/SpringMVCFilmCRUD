@@ -28,6 +28,7 @@ public class FilmController {
 	@RequestMapping(path = "output.do", params = "filmid", method = RequestMethod.GET)
 	public ModelAndView output(String filmid) {
 		ModelAndView mv = new ModelAndView();
+		try {
 		int id = Integer.parseInt(filmid);
 		Film film = filmDao.findFilmById(id);
 		List<Actor> actors = filmDao.findActorsByFilmId(id);
@@ -44,9 +45,12 @@ public class FilmController {
 			mv.setViewName("WEB-INF/views/error.jsp");
 
 		}
+		} catch (NumberFormatException e) {
+			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
+			mv.setViewName("WEB-INF/views/error.jsp");
+		}
 		return mv;
 	}
-
 	@RequestMapping(path = "keyword.do", params = "keyword", method = RequestMethod.GET)
 	public ModelAndView keyword(String keyword) {
 		ModelAndView mv = new ModelAndView();
