@@ -7,6 +7,7 @@
 <title>error</title>
 </head>
 <body>
+<a href="home.do">Home</a>
 <p> ${outputMessage} 
 
 </p>

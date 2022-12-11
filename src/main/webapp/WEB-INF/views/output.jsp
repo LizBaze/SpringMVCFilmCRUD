@@ -9,6 +9,7 @@
 <title>Film Details</title>
 </head>
 <body>
+<a href="home.do">Home</a>
 	<h4>Film</h4>
 	<p>ID: ${film.id} ${film} Category: ${film.category} </p>
 	<h4>Actors</h4>
