@@ -154,6 +154,8 @@ public class FilmController {
 		double rate = 0;
 		int filmLength = 0;
 		double cost = 0;
+		// looks up film by id, checks the rest of fields for 
+		// empty inputs and sets them to the film's existing values
 		try {
 			filmid = Integer.parseInt(id);
 			film = filmDao.findFilmById(filmid);
