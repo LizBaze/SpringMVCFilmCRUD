@@ -9,6 +9,12 @@
 </head>
 <body>
 
+	
+		
+		<!-- TODO put both buttons on the same line.-->
+	
+<br>
+<br>
 	<c:forEach var="film" items="${FilmList}">
       	<br>${film}<br>
       	<p>Actors</p>
@@ -17,7 +23,24 @@
 			<li>${actor}</li>
 			</c:forEach>
 		</ul>
+      <p>Delete Film:<p>
+      
+      <form action="delete.do" method="GET">
+    
+      <input type ="hidden" name = "filmid" value ="${film.id}"/><input type="submit" value="Delete"/>
+      </form>
+      
+      <form action="update.do" method="POST">
+	<label for="update"></label>
+	<input type="Submit" value="update"/>
+	
+	</form>
     </c:forEach>
+          
+      
+      <br>
+
+	
 
 </body>
 </html>

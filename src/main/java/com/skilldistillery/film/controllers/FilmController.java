@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.data.FilmDAOImpl;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -28,35 +29,40 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		int id = Integer.parseInt(filmid);
 		Film film = filmDao.findFilmById(id);
-
+		List<Actor> actors = filmDao.findActorsByFilmId(id);
 		if (film != null) {
 			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 
 			mv.addObject("film", film);
-
+			mv.addObject("actors", actors);
 			mv.setViewName("WEB-INF/views/output.jsp");
 
 		} else {
 			mv.addObject("outputMessage", "No Film Found");
 
 			mv.setViewName("WEB-INF/views/error.jsp");
+
 		}
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "keyword.do", params = "keyword", method = RequestMethod.GET)
 	public ModelAndView keyword(String keyword) {
 		ModelAndView mv = new ModelAndView();
-		
 		List<Film> film = filmDao.findFilmByKeyword(keyword);
 
 		if (film != null) {
+
 			for (Film film2 : film) {
 				film2.setCategory(filmDao.findCategoryByFilmId(film2.getId()));
 			}
-			
-			mv.addObject("FilmList", film);
 
+			for (Film film2 : film) {
+				film2.setActors(filmDao.findActorsByFilmId(film2.getId()));
+			}
+
+			mv.addObject("FilmList", film);
+			
 			mv.setViewName("WEB-INF/views/keywordformat.jsp");
 
 		} else {
@@ -66,7 +72,6 @@ public class FilmController {
 		}
 		return mv;
 	}
-	// TODO separate jsp's for successful and unsuccessful queries
 
 	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST, params = { "title", "description",
 			"releaseYear", "languageID", "rentalDuration", "rentalRate", "length", "replacementCost", "rating",
@@ -75,6 +80,8 @@ public class FilmController {
 			String rentalDuration, String rentalRate, String length, String replacementCost, String rating,
 			String features) {
 		ModelAndView mv = new ModelAndView();
+		int id = 0;
+		List<Actor> actors = filmDao.findActorsByFilmId(id);
 		Film film = null;
 		try {
 			short year = Short.parseShort(releaseYear);
@@ -86,6 +93,7 @@ public class FilmController {
 			film = new Film(title, description, year, langID, duration, rate, filmLength, cost, rating, features);
 		} catch (NumberFormatException e) {
 			mv.addObject("film", "We were unable to add your film to the database, please try again");
+			mv.addObject("actors", actors);
 			mv.setViewName("WEB-INF/views/output.jsp");
 			return mv;
 		}
@@ -94,6 +102,7 @@ public class FilmController {
 		if (film != null) {
 			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 			mv.setViewName("WEB-INF/views/output.jsp");
+
 			mv.addObject("film", film);
 		} else {
 			mv.setViewName("WEB-INF/views/error.jsp");
@@ -116,12 +125,14 @@ public class FilmController {
 
 	@RequestMapping(path = "updateFilm.do", params = { "id", "title", "description", "releaseYear", "languageID",
 			"rentalDuration", "rentalRate", "length", "replacementCost", "rating", "features" })
-	public ModelAndView updateFilm(String id, String title, String description, String releaseYear,
-			String languageID, String rentalDuration, String rentalRate, String length, String replacementCost,
-			String rating, String features) {
+	public ModelAndView updateFilm(String id, String title, String description, String releaseYear, String languageID,
+			String rentalDuration, String rentalRate, String length, String replacementCost, String rating,
+			String features) {
+
+		int filmid = 0;
+		List<Actor> actors = filmDao.findActorsByFilmId(filmid);
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
-		int filmid = 0;
 		short year = 0;
 		int duration = 0;
 		int langID = 0;
@@ -146,6 +157,7 @@ public class FilmController {
 		film.setDescription(description);
 		film.setReleaseYear(year);
 		film.setLanguageId(langID);
+		film.setRentalRate(rate);
 		film.setRentalDuration(duration);
 		film.setLength(filmLength);
 		film.setReplacementCost(cost);
@@ -155,6 +167,7 @@ public class FilmController {
 
 		if (film != null) {
 			mv.addObject("film", film);
+			mv.addObject("actors", actors);
 			mv.setViewName("WEB-INF/views/output.jsp");
 			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 
@@ -165,11 +178,10 @@ public class FilmController {
 
 		return mv;
 	}
-	
-	@RequestMapping (path="update.do") 
+
+	@RequestMapping(path = "update.do")
 	public String update() {
 		return "WEB-INF/views/update.jsp";
 	}
-	
-	
+
 }
