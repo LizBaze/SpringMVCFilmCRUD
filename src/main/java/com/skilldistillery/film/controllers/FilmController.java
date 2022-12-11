@@ -103,15 +103,15 @@ public class FilmController {
 		}
 
 		film = filmDao.createFilm(film);
-		if (film != null) {
+		if (film == null || film.getId() == 0) {
+			mv.setViewName("WEB-INF/views/error.jsp");
+			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
+		} else {
 			redir.addFlashAttribute("actors", actors);
 			redir.addFlashAttribute("film", film);
 			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 			
 			mv.setViewName("redirect:created.do");
-		} else {
-			mv.setViewName("WEB-INF/views/error.jsp");
-			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
 		}
 		return mv;
 	}

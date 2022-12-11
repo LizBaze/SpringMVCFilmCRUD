@@ -26,7 +26,7 @@
 	<br>
 	<h3>Add a new film to the database:</h3>
 	<form action="createfilm.do" method="POST">
-		<label for="title">Film Title</label> <input type="text" name="title" />
+		<label for="title">Film Title</label> <input type="text" name="title" required />
 		<label for="description">Description</label> 
 		<input type="text" name="description" /> 
 			<label for="releaseYear">Release Year</label> 
@@ -41,7 +41,6 @@
 		<input type="text" name="replacementCost" /> <br> <br>
 		<label for="rating">Rating</label> 
 		<select name="rating" id="rating">
-			<option value=""></option>
 			<option value="G">G</option>
 			<option value="PG">PG</option>
 			<option value="PG13">PG13</option>
@@ -58,7 +57,6 @@
 		</select>
 		<label for="languageID">Language</label> 
 		<select name="languageID" id="languageID">
-			<option value=""></option>
 			<option value="1">English</option>
 			<option value="2">Italian</option>
 			<option value="3">Japanese</option>

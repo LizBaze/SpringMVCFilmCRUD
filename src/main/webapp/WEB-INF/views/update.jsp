@@ -38,7 +38,6 @@
 	<br>
 	<label for="rating">Rating</label>
 	<select name="rating" id="rating">
-<option value=""></option>
 <option value="G">G</option>
 <option value="PG">PG</option>
 <option value="PG13">PG13</option>
@@ -58,7 +57,6 @@
 	
 	<label for="languageID">Language</label>
 	<select name="languageID" id="languageID">
-			<option value=""></option>
 			<option value="1">English</option>
 			<option value="2">Italian</option>
 			<option value="3">Japanese</option>
