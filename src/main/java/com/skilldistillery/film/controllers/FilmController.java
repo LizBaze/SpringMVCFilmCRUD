@@ -46,7 +46,7 @@ public class FilmController {
 
 		}
 		} catch (NumberFormatException e) {
-			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
+			mv.addObject("outputMessage", "No Film Found, please try entering a valid number");
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
 		return mv;
