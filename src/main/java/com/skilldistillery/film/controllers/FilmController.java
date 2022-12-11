@@ -173,7 +173,10 @@ public class FilmController {
 		return mv;
 	}
 	
-	
+	@RequestMapping (path="update.do") 
+	public String update() {
+		return "WEB-INF/views/update.jsp";
+	}
 	
 	
 }

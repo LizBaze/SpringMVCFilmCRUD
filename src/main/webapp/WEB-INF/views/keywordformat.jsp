@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -15,11 +15,16 @@
 	
 <br>
 <br>
-	<c:forEach var="keyword" items="${FilmList}">
-      <br>ID: ${keyword.id} ${keyword} 
-          
+	<c:forEach var="film" items="${FilmList}">
+      	<br>${film}<br>
+      	<p>Actors</p>
+		<ul> 
+			<c:forEach var="actor" items ="${film.actors}">
+			<li>${actor}</li>
+			</c:forEach>
+		</ul>
       <p>Delete Film:<p>
-      <div>
+      
       <form action="delete.do" method="GET">
     
       <input type ="hidden" name = "filmid" value ="${film.id}"/><input type="submit" value="Delete"/>
@@ -30,9 +35,12 @@
 	<input type="Submit" value="update"/>
 	
 	</form>
-      </div>
-      <br>
     </c:forEach>
+          
+      
+      <br>
+
+	
 
 </body>
 </html>
