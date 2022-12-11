@@ -48,9 +48,24 @@
 	<br>
 	<br>
 	<label for="rating">Rating</label>
-	<input type="text" name="rating"/>
+	<select name="rating" id="rating">
+<option value=""></option>
+<option value="G">G</option>
+<option value="PG">PG</option>
+<option value="PG13">PG13</option>
+<option value="R">R</option>
+<option value="NC17">NC17</option>
+</select>
+	
+	
 	<label for="features">Features</label>
-	<input type="text" name="features"/>
+	<select name="features" id="features">
+<option value=""></option>
+<option value="Behind the scenes">Behind the scenes</option>
+<option value="Commentaries">Commentaries</option>
+<option value="Deleted scenes">Deleted scenes</option>
+<option value="railers">Trailers</option>
+</select>
 	<br>
 	<br>
 	<input type="submit" value="Submit" />

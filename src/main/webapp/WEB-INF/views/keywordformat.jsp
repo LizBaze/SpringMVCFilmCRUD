@@ -12,7 +12,7 @@
 	
 		
 		<!-- TODO put both buttons on the same line.-->
-	
+	<a href="home.do">Home</a>
 <br>
 <br>
 	<c:forEach var="film" items="${FilmList}">
