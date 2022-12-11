@@ -33,6 +33,7 @@
       		</td>
       		<td>
     			  <form action="update.do" method="POST">
+    			  <input type ="hidden" name = "filmid" value ="${film.id}"/>
 				<label for="update"></label>
 				<input type="Submit" value="Update"/>
 				</form>

@@ -203,9 +203,14 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "update.do")
-	public String update() {
-		return "WEB-INF/views/update.jsp";
+	@RequestMapping(path = "update.do", params= "filmid")
+	public ModelAndView update(int filmid) {
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("filmid", filmid);
+		mv.setViewName("WEB-INF/views/update.jsp");
+		return mv;
 	}
 
 }

@@ -13,7 +13,7 @@
 	<form action="updateFilm.do" method="POST">
 	
 	<label for="id">Film ID</label>
-	<input type="text" name="id" required/>
+	<input type="text" name="id" value = "${filmid}" required/>
 	<br>
 	<br>
 	<label for="title">Film Title</label>

@@ -74,6 +74,7 @@
 	<h3>Update a film with new information</h3>
 
 	<form action="update.do" method="GET">
+	<input type ="hidden" name = "filmid" value = 0 />
 	<input type="submit" value="Update a film" />
 	</form>
 
