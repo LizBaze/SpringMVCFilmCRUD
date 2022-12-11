@@ -7,9 +7,9 @@
 <title>Update Film Information</title>
 </head>
 <body>
-
-<h3>Update a film with new information </h3>
 	<a href="home.do">Home</a>
+
+	<h3>Update a film with new information </h3>
 	<form action="updateFilm.do" method="POST">
 	
 	<label for="id">Film ID</label>

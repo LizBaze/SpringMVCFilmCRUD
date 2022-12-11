@@ -24,17 +24,20 @@
 			</c:forEach>
 		</ul>
       <p>Delete Film:<p>
-      
-      <form action="delete.do" method="GET">
-    
-      <input type ="hidden" name = "filmid" value ="${film.id}"/><input type="submit" value="Delete"/>
-      </form>
-      
-      <form action="update.do" method="POST">
-	<label for="update"></label>
-	<input type="Submit" value="update"/>
-	
-	</form>
+      <table>
+      	<tr>
+      		<td>
+     			 <form action="delete.do" method="GET">
+      			<input type ="hidden" name = "filmid" value ="${film.id}"/><input type="submit" value="Delete"/>
+      			</form>
+      		</td>
+      		<td>
+    			  <form action="update.do" method="POST">
+				<label for="update"></label>
+				<input type="Submit" value="Update"/>
+				</form>
+			</td>
+	</table>
     </c:forEach>
           
       
