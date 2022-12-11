@@ -16,7 +16,7 @@
 <br>
 <br>
 	<c:forEach var="film" items="${FilmList}">
-      	<br>${film}<br>
+      	<br>ID: ${film.id} ${film} Category: ${film.category} }<br>
       	<p>Actors</p>
 		<ul> 
 			<c:forEach var="actor" items ="${film.actors}">
