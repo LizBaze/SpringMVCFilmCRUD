@@ -61,9 +61,9 @@
 	<label for="features">Features</label>
 	<select name="features" id="features">
 <option value=""></option>
-<option value="Behind the scenes">Behind the scenes</option>
+<option value="Behind the Scenes">Behind the Scenes</option>
 <option value="Commentaries">Commentaries</option>
-<option value="Deleted scenes">Deleted scenes</option>
+<option value="Deleted Scenes">Deleted Scenes</option>
 <option value="railers">Trailers</option>
 </select>
 	<br>
