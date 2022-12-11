@@ -30,6 +30,8 @@ public class FilmController {
 		Film film = filmDao.findFilmById(id);
 
 		if (film != null) {
+			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
+
 			mv.addObject("film", film);
 
 			mv.setViewName("WEB-INF/views/output.jsp");
@@ -49,6 +51,10 @@ public class FilmController {
 		List<Film> film = filmDao.findFilmByKeyword(keyword);
 
 		if (film != null) {
+			for (Film film2 : film) {
+				film2.setCategory(filmDao.findCategoryByFilmId(film2.getId()));
+			}
+			
 			mv.addObject("FilmList", film);
 
 			mv.setViewName("WEB-INF/views/keywordformat.jsp");
@@ -86,6 +92,7 @@ public class FilmController {
 
 		film = filmDao.createFilm(film);
 		if (film != null) {
+			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 			mv.setViewName("WEB-INF/views/output.jsp");
 			mv.addObject("film", film);
 		} else {
@@ -149,6 +156,8 @@ public class FilmController {
 		if (film != null) {
 			mv.addObject("film", film);
 			mv.setViewName("WEB-INF/views/output.jsp");
+			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
+
 		} else {
 			mv.addObject("outputMessage", "We were unable to update this film");
 			mv.setViewName("WEB-INF/views/error.jsp");
