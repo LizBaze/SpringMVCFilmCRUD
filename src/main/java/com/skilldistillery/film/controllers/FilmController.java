@@ -118,6 +118,8 @@ public class FilmController {
 		film = filmDao.deleteFilm(film);
 		if (film == null) {
 			mv.addObject("outputMessage", "Film deletion successful");
+		} else {
+			mv.addObject("outputMessage", "We were unable to delete this film");
 		}
 		mv.setViewName("WEB-INF/views/error.jsp");
 		return mv;
