@@ -155,15 +155,21 @@ public class FilmController {
 		int filmLength = 0;
 		double cost = 0;
 		try {
-			filmid = ! id.equals("") ? Integer.parseInt(id) : 0;
-			year = !releaseYear.equals("")  ? Short.parseShort(releaseYear) : 0;
-			duration = !rentalDuration.equals("")  ? Integer.parseInt(rentalDuration) : 0;
-			langID = !languageID.equals("")  ? Integer.parseInt(languageID) : 0;
-			rate = !rentalRate.equals("")  ? Double.parseDouble(rentalRate) : 0;
-			filmLength = !length.equals("")  ? Integer.parseInt(length) : 0;
-			cost = !replacementCost.equals("") ? Double.parseDouble(replacementCost) : 0;
+			filmid = Integer.parseInt(id);
+			film = filmDao.findFilmById(filmid);
+			
+			year = !releaseYear.equals("")  ? Short.parseShort(releaseYear) : film.getReleaseYear();
+			duration = !rentalDuration.equals("")  ? Integer.parseInt(rentalDuration) : film.getRentalDuration();
+			langID = !languageID.equals("")  ? Integer.parseInt(languageID) : film.getLanguageId();
+			rate = !rentalRate.equals("")  ? Double.parseDouble(rentalRate) : film.getRentalRate();
+			filmLength = !length.equals("")  ? Integer.parseInt(length) : film.getLength();
+			cost = !replacementCost.equals("") ? Double.parseDouble(replacementCost) : film.getReplacementCost();
+			title = title.equals("") ? film.getTitle() : title;
+			description = description.equals("") ? film.getDescription() : description;
+			rating = rating.equals("") ? film.getRating() : rating;
+			features = features.equals("") ? film.getFeatures() : features;
 		} catch (NumberFormatException e) {
-			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
+			mv.addObject("outputMessage", "We were unable to update this film with the information provided, please try again");
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
 		film = new Film();
