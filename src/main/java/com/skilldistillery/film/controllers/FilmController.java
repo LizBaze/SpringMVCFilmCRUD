@@ -159,7 +159,7 @@ public class FilmController {
 		try {
 			filmid = Integer.parseInt(id);
 			film = filmDao.findFilmById(filmid);
-			
+			if (film != null) {
 			year = !releaseYear.equals("")  ? Short.parseShort(releaseYear) : film.getReleaseYear();
 			duration = !rentalDuration.equals("")  ? Integer.parseInt(rentalDuration) : film.getRentalDuration();
 			langID = !languageID.equals("")  ? Integer.parseInt(languageID) : film.getLanguageId();
@@ -170,11 +170,13 @@ public class FilmController {
 			description = description.equals("") ? film.getDescription() : description;
 			rating = rating.equals("") ? film.getRating() : rating;
 			features = features.equals("") ? film.getFeatures() : features;
+			}
 		} catch (NumberFormatException e) {
 			mv.addObject("outputMessage", "We were unable to update this film with the information provided, please try again");
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
-		film = new Film();
+		List<Actor> actors = null;
+		if (film != null) {
 		film.setId(filmid);
 		film.setTitle(title);
 		film.setDescription(description);
@@ -186,14 +188,15 @@ public class FilmController {
 		film.setReplacementCost(cost);
 		film.setRating(rating);
 		film.setFeatures(features);
-		List<Actor> actors = ( filmDao.findActorsByFilmId(filmid) );
+		actors = ( filmDao.findActorsByFilmId(filmid) );
 		film = filmDao.updateFilm(film);
+		}
 
 		if (film != null) {
+			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 			redir.addFlashAttribute("film", film);
 			redir.addFlashAttribute("actors", actors);
 			mv.setViewName("redirect:filmupdated.do");
-			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 
 		} else {
 			mv.addObject("outputMessage", "We were unable to update this film");
@@ -204,7 +207,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path = "filmupdated.do", method =RequestMethod.GET)
-	public ModelAndView filmUpdated() {
+	public ModelAndView filmUpdated(Film film) {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("WEB-INF/views/output.jsp");

@@ -21,11 +21,23 @@
 
 	<br>
 	<br>
-	<p>Delete Film:<p>
-	<form action="delete.do" method="GET">
-		<input type ="hidden" name = "filmid" value ="${film.id}"/>
-		<input type="submit" value="Delete"  />
-	</form>
+	<table>
+		<tr>
+			<td>
+				<form action="delete.do" method="GET">
+				<input type ="hidden" name = "filmid" value ="${film.id}"/>
+				<input type="submit" value="Delete"  />
+				</form>
+			</td>
+			<td>
+			 	<form action="update.do" method="POST">
+    			 <input type ="hidden" name = "filmid" value ="${film.id}"/>
+				<label for="update"></label>
+				<input type="Submit" value="Update"/>
+				</form>
+			</td>
+		</tr>
+	</table>
 <!-- TODO make delete button only show up if film is found -->
 </body>
 </html>
