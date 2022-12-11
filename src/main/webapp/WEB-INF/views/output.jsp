@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h4>Film</h4>
-	<p>ID: ${film.id} ${film} Category: {category} </p>
+	<p>ID: ${film.id} ${film} Category: ${film.category} </p>
 	<h4>Actors</h4>
 	<ul> 
 	<c:forEach var="actor" items ="${actors}">
