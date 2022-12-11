@@ -402,9 +402,11 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setString(10, film.getFeatures());
 			stmt.setInt(11, film.getId());
 			int updateCount = stmt.executeUpdate();
+			System.out.println(updateCount);
 			if (updateCount == 1) {
-				film = findFilmById(film.getId());
 				conn.commit();
+				film = findFilmById(film.getId());
+				System.out.println(film);
 			} else {
 				film = null;
 			}

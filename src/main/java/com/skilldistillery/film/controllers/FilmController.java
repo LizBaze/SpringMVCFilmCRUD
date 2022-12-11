@@ -193,10 +193,10 @@ public class FilmController {
 		}
 
 		if (film != null) {
+			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 			redir.addFlashAttribute("film", film);
 			redir.addFlashAttribute("actors", actors);
 			mv.setViewName("redirect:filmupdated.do");
-			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 
 		} else {
 			mv.addObject("outputMessage", "We were unable to update this film");
@@ -207,7 +207,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path = "filmupdated.do", method =RequestMethod.GET)
-	public ModelAndView filmUpdated() {
+	public ModelAndView filmUpdated(Film film) {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("WEB-INF/views/output.jsp");
