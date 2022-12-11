@@ -22,8 +22,7 @@
 	<input type="text" name="description" required/>
 	<label for="releaseYear">Release Year</label>
 	<input type="text" name="releaseYear" required/>
-	<label for="languageID">Language ID</label>
-	<input type="text" name="languageID" required/>
+	
 	<br>
 	<br>
 	<label for="rentalDuration">Rental Duration</label>
@@ -56,6 +55,18 @@
 <option value="Deleted scenes">Deleted Scenes</option>
 <option value="railers">Trailers</option>
 	</select>
+	
+	<label for="languageID">Language</label>
+	<select name="languageID" id="languageID">
+			<option value=""></option>
+			<option value="1">English</option>
+			<option value="2">Italian</option>
+			<option value="3">Japanese</option>
+			<option value="4">Mandarin</option>
+			<option value="5">French</option>
+			<option value="6">German</option>
+		</select>
+	
 	<br>
 	<br>
 	<input type="submit" value="Submit" />
