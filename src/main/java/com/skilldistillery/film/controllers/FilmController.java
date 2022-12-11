@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.data.FilmDAOImpl;
 import com.skilldistillery.film.entities.Actor;
@@ -76,7 +77,7 @@ public class FilmController {
 	@RequestMapping(path = "createfilm.do", method = RequestMethod.POST, params = { "title", "description",
 			"releaseYear", "languageID", "rentalDuration", "rentalRate", "length", "replacementCost", "rating",
 			"features" })
-	public ModelAndView createFilm(String title, String description, String releaseYear, String languageID,
+	public ModelAndView createFilm(RedirectAttributes redir, String title, String description, String releaseYear, String languageID,
 			String rentalDuration, String rentalRate, String length, String replacementCost, String rating,
 			String features) {
 		ModelAndView mv = new ModelAndView();
@@ -93,21 +94,29 @@ public class FilmController {
 			film = new Film(title, description, year, langID, duration, rate, filmLength, cost, rating, features);
 		} catch (NumberFormatException e) {
 			mv.addObject("film", "We were unable to add your film to the database, please try again");
-			mv.addObject("actors", actors);
 			mv.setViewName("WEB-INF/views/output.jsp");
 			return mv;
 		}
 
 		film = filmDao.createFilm(film);
 		if (film != null) {
+			redir.addFlashAttribute("actors", actors);
+			redir.addFlashAttribute("film", film);
 			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
-			mv.setViewName("WEB-INF/views/output.jsp");
-
-			mv.addObject("film", film);
+			
+			mv.setViewName("redirect:created.do");
 		} else {
 			mv.setViewName("WEB-INF/views/error.jsp");
 			mv.addObject("outputMessage", "We were unable to add your film to the database, please try again");
 		}
+		return mv;
+	}
+	
+	@RequestMapping(path = "created.do", method = RequestMethod.GET)
+	public ModelAndView filmCreated() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("WEB-INF/views/output.jsp");
 		return mv;
 	}
 
@@ -125,14 +134,14 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "updateFilm.do", params = { "id", "title", "description", "releaseYear", "languageID",
+	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST,
+			params = { "id", "title", "description", "releaseYear", "languageID",
 			"rentalDuration", "rentalRate", "length", "replacementCost", "rating", "features" })
-	public ModelAndView updateFilm(String id, String title, String description, String releaseYear, String languageID,
+	public ModelAndView updateFilm(RedirectAttributes redir, String id, String title, String description, String releaseYear, String languageID,
 			String rentalDuration, String rentalRate, String length, String replacementCost, String rating,
 			String features) {
 
 		int filmid = 0;
-		List<Actor> actors = filmDao.findActorsByFilmId(filmid);
 		ModelAndView mv = new ModelAndView();
 		Film film = null;
 		short year = 0;
@@ -165,12 +174,13 @@ public class FilmController {
 		film.setReplacementCost(cost);
 		film.setRating(rating);
 		film.setFeatures(features);
+		List<Actor> actors = ( filmDao.findActorsByFilmId(filmid) );
 		film = filmDao.updateFilm(film);
 
 		if (film != null) {
-			mv.addObject("film", film);
-			mv.addObject("actors", actors);
-			mv.setViewName("WEB-INF/views/output.jsp");
+			redir.addFlashAttribute("film", film);
+			redir.addFlashAttribute("actors", actors);
+			mv.setViewName("redirect:filmupdated.do");
 			film.setCategory(filmDao.findCategoryByFilmId(film.getId()));
 
 		} else {
@@ -178,6 +188,14 @@ public class FilmController {
 			mv.setViewName("WEB-INF/views/error.jsp");
 		}
 
+		return mv;
+	}
+	
+	@RequestMapping(path = "filmupdated.do", method =RequestMethod.GET)
+	public ModelAndView filmUpdated() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("WEB-INF/views/output.jsp");
 		return mv;
 	}
 
