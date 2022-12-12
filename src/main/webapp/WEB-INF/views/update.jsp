@@ -5,12 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Film Information</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<style><%@include file="../../main.css"%></style>
+
 </head>
 <body>
-	<a href="home.do">Home</a>
+<div class = "col-10 mx-auto">
+	<a class = "link-dark" href="home.do">Home</a>
 
 	<h3>Update a film with new information </h3>
-	<form action="updateFilm.do" method="POST">
+	<form class="form-group" action="updateFilm.do" method="POST">
 	
 	<label for="id">Film ID</label>
 	<input type="text" name="id" value = "${filmid}" required/>
@@ -32,10 +37,10 @@
 	
 	<label for="length">Length</label>
 	<input type="text" name="length"/>
+	<br> <br>
 	<label for="replacementCost">Replacement Cost</label>
 	<input type="text" name="replacementCost"/>
-	<br>
-	<br>
+	
 	<label for="rating">Rating</label>
 	<select name="rating" id="rating">
 <option value="G">G</option>
@@ -43,7 +48,8 @@
 <option value="PG13">PG13</option>
 <option value="R">R</option>
 <option value="NC17">NC17</option>
-</select>
+</select> 
+<br><br>
 	
 	
 	<label for="features">Features</label>
@@ -67,8 +73,8 @@
 	
 	<br>
 	<br>
-	<input type="submit" value="Submit" />
+	<input class = "btn btn-dark" type="submit" value="Submit" />
 	</form>
-
+</div>
 </body>
 </html>
