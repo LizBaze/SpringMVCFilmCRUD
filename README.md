@@ -1,31 +1,58 @@
 ## MVC Film Site
+eeee   eeeeee   zeeeeeeee.  4eeeec  4eeer
+$$$$   $$$$$"  4$$$$$$$$$b  "$$$$$  4$$$F
+$$$$  4$$$$P  .$$$$$$$$$$$L  q$$$$p  $$$F
+$$$$  J$$$$   $$$$$$$$$$$$$.  $$$$L  $$$F
+$$$P  $$$$"  d$$$$$$$$$$$$$$  "d4$L  q$FF
+$$$F  $$$P  z$$$$$$$$$$$$$$P.  q$$$  q$FF
+$$$F 4$$$" 4$$$$$$$$$$$$$$$$P   d$$$  $$F
+$$$  d$$F .$$$$$$$ccc$$$l$$$$9  d$$  $$$$
+$$$  $$$ LL$ll   _  q$l     $3$ l$  l$$$$
+$$P  C"    lll  l0l  l$$$$D  $$$  ___ \$F
+$$  4$   pd$Fl  d$F  l$l    $$$  /$$4\ FF
+$P dl$   ze$Fl  $$F  l$Pc$D  $$  \$$$/ $F
+$$  $Pb   qlFl  3$"  l$l    $$$b      .$$
+$$  bbbb   .ll  "   d"c$$$$$$$$L^$ $$F$$$
+$$ b   db   $l$$$$$$$$$$z"d$$$$$$$$$r3l$$F
+$$ Fl.     d$$$$$$$$$$$$$$$***""""  ".$$F
+$$  d$$$$$$$$$$$***""""               \$F
+$$ d$$r***"""        .....eeeeP***e    .$
+""      ....ze===**""""""         ^*c  "F
+===^"""""              ...........  ^*. "
+eeeeeeeeeee$$$$$$$$$$$$$$$$$$$$$$$bc. ^%.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$bc.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$F
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$F
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$F
+
 
 
 ## Description
 This is a Dynamic web application project. You can enter a film ID and see the films details, 
-if the ID is not valid, you will be sent to a web page stating so. You can also add a new film
+if the ID is not valid, you will be sent to a web page stating so. You can also add/create a new film
 by entering information into the web from fields, if adding the film is not successful you will be
 directed to another page stating such. As you explore the different options you will notice that 
 you have the ability to delete and update films that are in the database, if any of the modifications
 do not work you will be directed to a page communicating just that. Keyword searches for films can be performed,
-all actions to retrieve a pre-existing films will produce the cast of actors and category for that film. 
+all actions to retrieve pre-existing film(s) will produce the cast of actors and category for that film. 
 
 ### Technologies Used
 - Git
-- Data Access Object
-- JSP
-- JDBC
+- Data Access Object-(DAO)
+- Java Server Pages-(JSP)
+- Java Database Connectivity and Application Programming Interface -(API)--{JDBC}
 - Controller
 - Gradle
-- xml
-- mySQL
+- Extensible Markup Language-(XML)
+- My Standard Query Language-(mySQL)
 - Tomcat server v8.5
 - SpringToolsSuite4
 - terminal
 - drivers
+- servlet
 
 ### Lessons Learned
-1) Be very careful when to make sure everything is saved, and communicate to your partner(s) when
+1) Be very careful when making sure everything is saved, and communicate to your partner(s) when
 interacting with github.
 
 2) Two heads are better than one
